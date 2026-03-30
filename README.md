@@ -1,3 +1,54 @@
+# TimesFM + N-HiTS Direct Forecasting Head
+
+> **Fork of [google-research/timesfm](https://github.com/google-research/timesfm)**
+> with a custom N-HiTS-style hierarchical decoder for direct multi-step forecasting.
+
+## What's Added
+
+This fork adds an N-HiTS-style custom head on top of the frozen TimesFM 2.5 backbone
+to test whether **direct forecasting outperforms autoregressive decoding on long horizons**.
+
+### Custom Files
+
+| File | Description |
+|---|---|
+| `models/nhits_head.py` | N-HiTS hierarchical decoder (Trend / Seasonal / Detail + per-covariate blocks) |
+| `experiments/finetune_etth1.py` | Fine-tuning on ETTh1, evaluation on ETTh2, AR baseline comparison |
+| `experiments/run_etth1.py` | TimesFM zero-shot comparison (no cov / xreg+timesfm / timesfm+xreg) |
+| `experiments/run_m3.py` | M3 Monthly benchmark |
+
+### Architecture
+
+```
+TimesFM Backbone (frozen, 200M params)
+    └── output_embeddings [B, 16, 1280]
+            │
+            ├── Trend Block    (MaxPool k=16, ~2 coeffs, interpolate)
+            ├── Seasonal Block (MaxPool k=4, ~12 coeffs, interpolate)
+            ├── Detail Block   (no pool, H coeffs, direct output)
+            ├── HUFL Block     (covariate-specific)
+            ├── HULL Block     ...
+            └── (6 covariate blocks total)
+            │
+            └── Sum → prediction [B, H]
+```
+
+### Run
+
+```bash
+pip install -e .
+pip install datasetsforecast pandas matplotlib
+
+# Fine-tune + evaluate across horizons {96, 192, 336, 720}
+python experiments/finetune_etth1.py
+```
+
+---
+
+*Original README below.*
+
+---
+
 # TimesFM
 
 TimesFM (Time Series Foundation Model) is a pretrained time-series foundation
