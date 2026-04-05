@@ -1,0 +1,22 @@
+"""April-Cov 모델 설정."""
+
+DEFAULT_CONFIG = {
+    "n_freq_downsample": [24, 4, 1],
+    "interp_trend": "linear",
+    "interp_seasonal": "cubic",
+    "mlp_units": [[512, 512], [512, 512], [512, 512]],
+    "activation": "ReLU",
+    "dropout": 0.0,
+    "learning_rate": 1e-3,
+    "max_steps_per_stage": 2000,
+    "batch_size": 32,
+    "context_len": 512,
+    "embed_dim": 1280,
+    "patch_len": 32,
+    # Covariate
+    "n_cov": 6,
+    "cov_ctx_dim": 256,
+    "cov_fut_dim": 128,
+    "cov_encoder_channels": [64, 128, 256],
+    "cov_encoder_kernel": 5,
+}

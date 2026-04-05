@@ -1,0 +1,16 @@
+"""April 모델 설정."""
+
+DEFAULT_CONFIG = {
+    "n_freq_downsample": [24, 8, 1],
+    "interp_trend": "linear",
+    "interp_seasonal": "cubic",
+    "mlp_units": [[512, 512], [512, 512], [512, 512]],
+    "activation": "ReLU",
+    "dropout": 0.0,
+    "learning_rate": 1e-3,
+    "max_steps_per_stage": 2000,
+    "batch_size": 32,
+    "context_len": 512,
+    "embed_dim": 1280,
+    "patch_len": 32,
+}

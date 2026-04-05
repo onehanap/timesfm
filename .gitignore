@@ -5,10 +5,10 @@ checkpoints/
 wandb/
 datasets/
 results/
-timesfm_jax.egg-info/
+*.egg-info/
 development_setup.md
 
 # 실험 결과 (재현 가능하므로 제외)
 *.pt
-*.png
 m3/
+experiments/bench_cache/

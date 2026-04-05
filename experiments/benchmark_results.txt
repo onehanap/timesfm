@@ -1,0 +1,48 @@
+============================================================
+  April Benchmark Results — ETTh1 (chronological 60/20/20)
+  Last updated: 2026-04-04 12:49
+============================================================
+
+  h=96
+    TimesFM (AR)        | MSE:   6.5006 | MAE: 1.9052 | steps: zero-shot
+    N-HiTS              | MSE:   8.7094 | MAE: 2.3091 | steps: 6000
+    April Cov_L1        | MSE:   5.7854 | MAE: 1.8711 | steps: 2000x3
+    April Cov_L1_v2     | MSE:   6.7937 | MAE: 2.0252 | steps: 2000x3
+    April Cov_Raw       | MSE:   5.7273 | MAE: 1.8661 | steps: 2000x3
+    April L1            | MSE:   6.9865 | MAE: 2.0550 | steps: 2000x3
+    April L2            | MSE:   7.0544 | MAE: 2.0547 | steps: 2000x3
+    April STL_L1        | MSE:   6.8848 | MAE: 2.0347 | steps: 2000x3
+    April-Raw           | MSE:   6.9885 | MAE: 2.0485 | steps: 2000x3
+
+  h=192
+    TimesFM (AR)        | MSE:   7.8304 | MAE: 2.1438 | steps: zero-shot
+    N-HiTS              | MSE:   9.3630 | MAE: 2.4289 | steps: 6000
+    April Cov_L1        | MSE:   6.5289 | MAE: 2.0155 | steps: 2000x3
+    April Cov_L1_v2     | MSE:   7.6223 | MAE: 2.1745 | steps: 2000x3
+    April Cov_Raw       | MSE:   6.6630 | MAE: 2.0571 | steps: 2000x3
+    April L1            | MSE:   8.0313 | MAE: 2.2295 | steps: 2000x3
+    April L2            | MSE:   8.0747 | MAE: 2.2371 | steps: 2000x3
+    April STL_L1        | MSE:   7.8900 | MAE: 2.2117 | steps: 2000x3
+    April-Raw           | MSE:   8.1160 | MAE: 2.2386 | steps: 2000x3
+
+  h=336
+    TimesFM (AR)        | MSE:   8.2818 | MAE: 2.2464 | steps: zero-shot
+    N-HiTS              | MSE:  10.2682 | MAE: 2.5455 | steps: 6000
+    April Cov_L1        | MSE:   7.1533 | MAE: 2.1362 | steps: 2000x3
+    April Cov_L1_v2     | MSE:   8.1149 | MAE: 2.2676 | steps: 2000x3
+    April Cov_Raw       | MSE:   6.8526 | MAE: 2.0970 | steps: 2000x3
+    April L1            | MSE:   8.7017 | MAE: 2.3401 | steps: 2000x3
+    April L2            | MSE:   8.8126 | MAE: 2.3555 | steps: 2000x3
+    April STL_L1        | MSE:   8.4503 | MAE: 2.3129 | steps: 2000x3
+    April-Raw           | MSE:   8.6093 | MAE: 2.3350 | steps: 2000x3
+
+  h=720
+    TimesFM (AR)        | MSE:  10.1080 | MAE: 2.4897 | steps: zero-shot
+    N-HiTS              | MSE:  12.3460 | MAE: 2.7557 | steps: 6000
+    April Cov_L1        | MSE:   8.4939 | MAE: 2.3254 | steps: 2000x3
+    April Cov_L1_v2     | MSE:  10.8375 | MAE: 2.5928 | steps: 2000x3
+    April Cov_Raw       | MSE:   8.4191 | MAE: 2.3080 | steps: 2000x3
+    April L1            | MSE:  10.9906 | MAE: 2.5956 | steps: 2000x3
+    April L2            | MSE:  11.2030 | MAE: 2.6205 | steps: 2000x3
+    April STL_L1        | MSE:  10.7731 | MAE: 2.5740 | steps: 2000x3
+    April-Raw           | MSE:  10.9729 | MAE: 2.5928 | steps: 2000x3
