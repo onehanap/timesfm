@@ -206,7 +206,7 @@ def compute_decomposition_metrics(
 # Console printing
 # ---------------------------------------------------------------------------
 
-def print_decomposition_metrics(metrics: dict, horizon: int) -> None:
+def print_decomposition_metrics(metrics: dict, horizon: int, label: str = "") -> None:
     es = metrics["energy_share"]
     stl = metrics["stl_reference_mse"]
     lb = metrics["residual_ljung_box_pvalue"]
@@ -214,7 +214,8 @@ def print_decomposition_metrics(metrics: dict, horizon: int) -> None:
     pm = metrics["partial_mse"]
     acfs = metrics["residual_acf_abs_sum"]
 
-    print(f"\n  [Decomposition Metrics — h={horizon}]")
+    tag = f" — {label}" if label else ""
+    print(f"\n  [Decomposition Metrics{tag} — h={horizon}]")
     print(f"    Energy share   | T={es['trend']:.3f}  S={es['seasonal']:.3f}  R={es['residual']:.3f}")
     if stl["trend"] is not None:
         print(f"    STL ref MSE    | T={stl['trend']:.4f}  S={stl['seasonal']:.4f}  R={stl['residual']:.4f}  (n={stl['n_samples']})")

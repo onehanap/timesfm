@@ -67,7 +67,9 @@ def update_benchmark(model_name: str, results: list[dict], steps_per_stage: int 
         lines.append(f"  h={h}")
         models = horizons_data[h]
         fixed_order = ["TimesFM (AR)", "N-HiTS"]
-        april_models = sorted([k for k in models if k not in fixed_order])
+        preferred_order = ["April L1", "April-Raw", "April Cov_L1", "April Cov_Raw", "April STL_L1"]
+        april_models = [k for k in preferred_order if k in models]
+        april_models += sorted([k for k in models if k not in fixed_order and k not in april_models])
         for name in fixed_order + april_models:
             if name in models:
                 mse, mae, steps = models[name]

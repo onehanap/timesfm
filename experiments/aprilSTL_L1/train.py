@@ -20,10 +20,10 @@ from _common.eval_decomposition import (
     print_decomposition_metrics,
     plot_decomposition_metrics,
 )
+from _common.nhits_baseline import train_and_eval_nhits
 
 from april.model.decomp_timesfm import DecompTimesFM
 from april.config import DEFAULT_CONFIG
-from models.nhits_decoder import TimesFMWithNHiTSDecoder
 from timesfm.timesfm_2p5.timesfm_2p5_torch import TimesFM_2p5_200M_torch
 from timesfm.configs import ForecastConfig
 
@@ -176,27 +176,6 @@ def train_stage(model, stage, train_loader, cfg, device):
     return losses
 
 
-def train_nhits(nhits_model, train_loader, cfg, device):
-    total_steps = cfg["max_steps_per_stage"] * 3
-    optimizer = torch.optim.AdamW(
-        [p for p in nhits_model.parameters() if p.requires_grad],
-        lr=cfg["learning_rate"], weight_decay=1e-4)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=total_steps)
-    nhits_model.train()
-    step = 0
-    while step < total_steps:
-        for batch in train_loader:
-            if step >= total_steps: break
-            context, masks, future = batch[0], batch[1], batch[2]
-            context, masks, future = context.to(device), masks.to(device), future.to(device)
-            loss = LOSS_FN(nhits_model(context, masks), future)
-            optimizer.zero_grad(); loss.backward()
-            torch.nn.utils.clip_grad_norm_(nhits_model.parameters(), max_norm=1.0)
-            optimizer.step(); scheduler.step(); step += 1
-            if step % 500 == 0 or step == 1:
-                print(f"    N-HiTS | Step {step}/{total_steps} | Loss: {loss.item():.6f}")
-
-
 # ---------------------------------------------------------------------------
 # Evaluation
 # ---------------------------------------------------------------------------
@@ -209,24 +188,6 @@ def evaluate(model, loader, device):
     for batch in loader:
         ctx, msk, fut = batch[0].to(device), batch[1].to(device), batch[2].to(device)
         pred, decomp = model(ctx, msk)
-        total_mse += ((pred - fut)**2).sum().item()
-        total_mae += (pred - fut).abs().sum().item()
-        n += fut.numel()
-        all_p.append(pred.cpu()); all_f.append(fut.cpu())
-        all_d.append({k: v.cpu() for k, v in decomp.items()})
-    p, f = torch.cat(all_p), torch.cat(all_f)
-    d = {k: torch.cat([x[k] for x in all_d]) for k in all_d[0]}
-    return total_mse/n, total_mae/n, p, f, d
-
-
-@torch.no_grad()
-def evaluate_nhits(model, loader, device):
-    model.eval()
-    total_mse, total_mae, n = 0., 0., 0
-    all_p, all_f, all_d = [], [], []
-    for batch in loader:
-        ctx, msk, fut = batch[0].to(device), batch[1].to(device), batch[2].to(device)
-        pred, decomp = model(ctx, msk, return_decomposition=True)
         total_mse += ((pred - fut)**2).sum().item()
         total_mae += (pred - fut).abs().sum().item()
         n += fut.numel()
@@ -341,22 +302,15 @@ def run_single_horizon(cfg, df, device, baseline_model):
         losses_all.append(train_stage(model, stage, train_loader, cfg, device))
     plot_stage_losses(losses_all, horizon)
 
-    # N-HiTS (cached)
+    # N-HiTS baseline (원본 neuralforecast 구현, cached)
     cache_dir = os.path.join(EXPERIMENTS_DIR, "bench_cache"); os.makedirs(cache_dir, exist_ok=True)
-    nc_path = os.path.join(cache_dir, f"nhits_cache_h{horizon}.pt")
-    if os.path.exists(nc_path):
-        print(f"\n[N-HiTS] 캐시 로드"); nc = torch.load(nc_path, map_location="cpu", weights_only=False)
-        nhits_mse, nhits_mae, nhits_preds, nhits_decomps = nc["mse"], nc["mae"], nc["preds"], nc["decomps"]
-    else:
-        print("\n[N-HiTS] 학습 중...")
-        nm = TimesFMWithNHiTSDecoder(horizon=horizon, context_len=context_len, n_blocks_per_stack=2, hidden_dim=512, dropout=0.0, unfreeze_last_n=0).to(device)
-        # N-HiTS는 STL 없는 일반 데이터로 학습
-        nhits_train_ds = ETTDataset(df.iloc[:TRAIN_BORDER], context_len, horizon)
-        nhits_loader = DataLoader(nhits_train_ds, batch_size=bs, shuffle=True, num_workers=2)
-        train_nhits(nm, nhits_loader, cfg, device)
-        nhits_mse, nhits_mae, nhits_preds, _, nhits_decomps = evaluate_nhits(nm, test_loader, device)
-        torch.save({"mse":nhits_mse,"mae":nhits_mae,"preds":nhits_preds,"decomps":nhits_decomps}, nc_path)
-        del nm; torch.cuda.empty_cache()
+    nhits_mse, nhits_mae, nhits_preds, nhits_decomps = train_and_eval_nhits(
+        df=df, target_col="OT",
+        train_border=TRAIN_BORDER, val_border=VAL_BORDER,
+        context_len=context_len, horizon=horizon,
+        max_steps=cfg["max_steps_per_stage"] * 3,
+        cache_path=os.path.join(cache_dir, f"nhits_orig_cache_h{horizon}.pt"),
+    )
 
     # Eval
     test_mse, test_mae, test_preds, test_futures, test_decomps = evaluate(model, test_loader, device)
@@ -379,21 +333,38 @@ def run_single_horizon(cfg, df, device, baseline_model):
     plot_decomposition(test_futures, horizon, test_preds, test_decomps, nhits_preds, nhits_decomps)
     plot_comparison(test_futures, bl_preds, test_preds, nhits_preds, horizon)
 
-    # --- Decomposition quality metrics ---
+    # --- Decomposition quality metrics (April) ---
     decomp_metrics = compute_decomposition_metrics(
         test_futures, test_decomps, period=24,
     )
-    print_decomposition_metrics(decomp_metrics, horizon)
+    print_decomposition_metrics(decomp_metrics, horizon, label=f"April {LOSS_NAME}")
     plot_decomposition_metrics(
         decomp_metrics, horizon,
         os.path.join(OUTPUT_DIR, f"decomposition_metrics_h{horizon}.png"),
         title_prefix=f"April {LOSS_NAME} — ",
     )
 
+    # --- Decomposition quality metrics (N-HiTS, for comparison) ---
+    nhits_decomps_renamed = {
+        "trend":    nhits_decomps["trend"],
+        "seasonal": nhits_decomps["seasonal"],
+        "residual": nhits_decomps["detail"],
+    }
+    nhits_decomp_metrics = compute_decomposition_metrics(
+        test_futures, nhits_decomps_renamed, period=24,
+    )
+    print_decomposition_metrics(nhits_decomp_metrics, horizon, label="N-HiTS")
+    plot_decomposition_metrics(
+        nhits_decomp_metrics, horizon,
+        os.path.join(OUTPUT_DIR, f"decomposition_metrics_nhits_h{horizon}.png"),
+        title_prefix="N-HiTS — ",
+    )
+
     return {"horizon":horizon, "test_mse":float(test_mse), "test_mae":float(test_mae),
             "nhits_mse":float(nhits_mse), "nhits_mae":float(nhits_mae),
             "bl_mse":float(bl_mse), "bl_mae":float(bl_mae),
-            "decomposition_metrics": decomp_metrics}
+            "decomposition_metrics": decomp_metrics,
+            "nhits_decomposition_metrics": nhits_decomp_metrics}
 
 
 def main():

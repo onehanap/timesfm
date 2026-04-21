@@ -12,3 +12,4 @@ development_setup.md
 *.pt
 m3/
 experiments/bench_cache/
+lightning_logs/
