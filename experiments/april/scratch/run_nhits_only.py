@@ -7,9 +7,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import torch
 
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "..")
+APRIL_DIR = os.path.join(PROJECT_ROOT, "experiments", "april")
 sys.path.insert(0, PROJECT_ROOT)
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, APRIL_DIR)
 
 from _common.nhits_baseline import train_and_eval_nhits
 
@@ -18,7 +19,7 @@ VAL_BORDER = 8640 + 2880
 CONTEXT_LEN = 512
 HORIZONS = [96, 192, 336, 720]
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
-CACHE_DIR = os.path.join(OUTPUT_DIR, "bench_cache")
+CACHE_DIR = os.path.join(PROJECT_ROOT, "experiments", "bench_cache")
 
 
 def load_ett(name="ETTh1"):

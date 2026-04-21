@@ -11,9 +11,10 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "..")
+APRIL_DIR = os.path.join(PROJECT_ROOT, "experiments", "april")
 sys.path.insert(0, PROJECT_ROOT)
-sys.path.insert(0, os.path.join(PROJECT_ROOT, "experiments"))
+sys.path.insert(0, APRIL_DIR)
 
 from _common.eval_decomposition import (
     compute_decomposition_metrics,
@@ -29,7 +30,7 @@ from timesfm.timesfm_2p5.timesfm_2p5_torch import TimesFM_2p5_200M_torch
 from timesfm.configs import ForecastConfig
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
-EXPERIMENTS_DIR = os.path.join(PROJECT_ROOT, "experiments")
+EXPERIMENTS_DIR = os.path.join(PROJECT_ROOT, "experiments")  # for bench_cache/ (shared)
 
 TRAIN_BORDER = 8640
 VAL_BORDER = 8640 + 2880
@@ -323,7 +324,6 @@ def main():
         print(f"  h={r['horizon']:>4d}  AR={r['bl_mse']:.4f}  NHiTS={r['nhits_mse']:.4f}  April={r['test_mse']:.4f}")
     with open(os.path.join(OUTPUT_DIR, "results.json"), "w") as f: json.dump(results, f, indent=2)
     plot_summary(results)
-    sys.path.insert(0, EXPERIMENTS_DIR)
     from bench_utils import update_benchmark
     update_benchmark("April L1", results, steps_per_stage=cfg["max_steps_per_stage"])
 

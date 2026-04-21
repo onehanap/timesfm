@@ -22,9 +22,10 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 
 # 프로젝트 루트
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "..")
+APRIL_DIR = os.path.join(PROJECT_ROOT, "experiments", "april")
 sys.path.insert(0, PROJECT_ROOT)
-sys.path.insert(0, os.path.join(PROJECT_ROOT, "experiments"))
+sys.path.insert(0, APRIL_DIR)
 
 from _common.eval_decomposition import (
     compute_decomposition_metrics,
@@ -511,7 +512,6 @@ def main():
 
     plot_summary(results)
 
-    sys.path.insert(0, EXPERIMENTS_DIR)
     from bench_utils import update_benchmark
     update_benchmark("April-Raw", results, steps_per_stage=cfg["max_steps_per_stage"])
     print(f"\n모든 결과물이 {OUTPUT_DIR} 에 저장되었습니다.")
