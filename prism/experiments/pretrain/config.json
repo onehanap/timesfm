@@ -1,0 +1,21 @@
+{
+  "context_len": 1024,
+  "horizon": 128,
+  "patch_len": 32,
+  "embed_dim": 1280,
+  "n_freq_downsample_trend": 32,
+  "n_freq_downsample_seasonal": [
+    16,
+    8,
+    4
+  ],
+  "hidden_dim": 1280,
+  "use_bias": false,
+  "activation": "swish",
+  "learning_rate": 0.001,
+  "batch_size": 512,
+  "mask_aug_prob": 0.5,
+  "mask_aug_max_patches": 16,
+  "steps_per_stage": 6250,
+  "corpus": "all"
+}

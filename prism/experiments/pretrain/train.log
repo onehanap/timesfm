@@ -1,0 +1,199 @@
+Building DecompTimesFMPrism (backbone frozen)...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  Decoders trainable params: 8,673,280
+Building pretrain dataloader (corpus=all)...
+  LOTSA usable subsets: 19 (2.3s)
+  Monash usable subsets: 16 (1.8s)
+  Subsets used: 35
+
+=== Stage 1 (trend) : 6250 steps, start=0, mask_aug=0.5 ===
+  stage=1(trend) step=1/6250 loss=2.020581 valid=0.74 rate=0.2/s elapsed=4s
+  stage=1(trend) step=200/6250 loss=3.189644 valid=0.72 rate=3.1/s elapsed=68s
+  stage=1(trend) step=400/6250 loss=1.555206 valid=0.74 rate=3.1/s elapsed=133s
+  stage=1(trend) step=600/6250 loss=1.438228 valid=0.76 rate=3.1/s elapsed=198s
+  stage=1(trend) step=800/6250 loss=0.973245 valid=0.76 rate=3.1/s elapsed=263s
+  stage=1(trend) step=1000/6250 loss=0.980960 valid=0.73 rate=3.1/s elapsed=327s
+  stage=1(trend) step=1200/6250 loss=1.656339 valid=0.74 rate=3.1/s elapsed=392s
+  stage=1(trend) step=1400/6250 loss=0.990734 valid=0.74 rate=3.1/s elapsed=457s
+  stage=1(trend) step=1600/6250 loss=1.604160 valid=0.72 rate=3.1/s elapsed=521s
+  stage=1(trend) step=1800/6250 loss=1.485784 valid=0.74 rate=3.1/s elapsed=586s
+  stage=1(trend) step=2000/6250 loss=2.203267 valid=0.71 rate=3.1/s elapsed=651s
+  [ckpt] saved stage1_step0002000.pt
+  stage=1(trend) step=2200/6250 loss=2.068733 valid=0.75 rate=3.1/s elapsed=716s
+  stage=1(trend) step=2400/6250 loss=2.272221 valid=0.74 rate=3.1/s elapsed=780s
+  stage=1(trend) step=2600/6250 loss=1.670704 valid=0.75 rate=3.1/s elapsed=845s
+  stage=1(trend) step=2800/6250 loss=2.528420 valid=0.76 rate=3.1/s elapsed=910s
+  stage=1(trend) step=3000/6250 loss=3.127179 valid=0.73 rate=3.1/s elapsed=974s
+  stage=1(trend) step=3200/6250 loss=2.036957 valid=0.74 rate=3.1/s elapsed=1039s
+  stage=1(trend) step=3400/6250 loss=1.477794 valid=0.75 rate=3.1/s elapsed=1104s
+  stage=1(trend) step=3600/6250 loss=1.168069 valid=0.75 rate=3.1/s elapsed=1168s
+  stage=1(trend) step=3800/6250 loss=0.888642 valid=0.74 rate=3.1/s elapsed=1233s
+  stage=1(trend) step=4000/6250 loss=1.352579 valid=0.77 rate=3.1/s elapsed=1298s
+  [ckpt] saved stage1_step0004000.pt
+  stage=1(trend) step=4200/6250 loss=1.115717 valid=0.74 rate=3.1/s elapsed=1363s
+  stage=1(trend) step=4400/6250 loss=0.987356 valid=0.74 rate=3.1/s elapsed=1427s
+  stage=1(trend) step=4600/6250 loss=1.125388 valid=0.75 rate=3.1/s elapsed=1492s
+  stage=1(trend) step=4800/6250 loss=1.057260 valid=0.75 rate=3.1/s elapsed=1557s
+  stage=1(trend) step=5000/6250 loss=0.974443 valid=0.74 rate=3.1/s elapsed=1622s
+  stage=1(trend) step=5200/6250 loss=1.888142 valid=0.72 rate=3.1/s elapsed=1686s
+  stage=1(trend) step=5400/6250 loss=2.791255 valid=0.73 rate=3.1/s elapsed=1751s
+  stage=1(trend) step=5600/6250 loss=1.449035 valid=0.76 rate=3.1/s elapsed=1816s
+  stage=1(trend) step=5800/6250 loss=1.157204 valid=0.74 rate=3.1/s elapsed=1880s
+  stage=1(trend) step=6000/6250 loss=1.337315 valid=0.72 rate=3.1/s elapsed=1945s
+  [ckpt] saved stage1_step0006000.pt
+  stage=1(trend) step=6200/6250 loss=1.663556 valid=0.74 rate=3.1/s elapsed=2010s
+  [ckpt] saved stage1_step0006250.pt
+
+=== Stage 2 (seasonal_lo) : 6250 steps, start=0, mask_aug=0.5 ===
+  stage=2(seasonal_lo) step=1/6250 loss=1.436174 valid=0.75 rate=0.3/s elapsed=4s
+  stage=2(seasonal_lo) step=200/6250 loss=2.826352 valid=0.72 rate=3.0/s elapsed=69s
+  stage=2(seasonal_lo) step=400/6250 loss=1.467862 valid=0.74 rate=3.0/s elapsed=136s
+  stage=2(seasonal_lo) step=600/6250 loss=1.209630 valid=0.75 rate=3.0/s elapsed=202s
+  stage=2(seasonal_lo) step=800/6250 loss=0.886493 valid=0.75 rate=3.0/s elapsed=268s
+  stage=2(seasonal_lo) step=1000/6250 loss=0.971068 valid=0.73 rate=3.0/s elapsed=334s
+  stage=2(seasonal_lo) step=1200/6250 loss=1.442672 valid=0.74 rate=3.0/s elapsed=400s
+  stage=2(seasonal_lo) step=1400/6250 loss=1.022584 valid=0.75 rate=3.0/s elapsed=466s
+  stage=2(seasonal_lo) step=1600/6250 loss=1.532442 valid=0.71 rate=3.0/s elapsed=533s
+  stage=2(seasonal_lo) step=1800/6250 loss=1.386996 valid=0.74 rate=3.0/s elapsed=599s
+  stage=2(seasonal_lo) step=2000/6250 loss=2.321410 valid=0.71 rate=3.0/s elapsed=665s
+  [ckpt] saved stage2_step0002000.pt
+  stage=2(seasonal_lo) step=2200/6250 loss=2.055155 valid=0.74 rate=3.0/s elapsed=731s
+  stage=2(seasonal_lo) step=2400/6250 loss=2.103706 valid=0.74 rate=3.0/s elapsed=797s
+  stage=2(seasonal_lo) step=2600/6250 loss=1.552769 valid=0.76 rate=3.0/s elapsed=863s
+  stage=2(seasonal_lo) step=2800/6250 loss=2.409919 valid=0.78 rate=3.0/s elapsed=930s
+  stage=2(seasonal_lo) step=3000/6250 loss=3.001088 valid=0.73 rate=3.0/s elapsed=996s
+  stage=2(seasonal_lo) step=3200/6250 loss=1.959373 valid=0.74 rate=3.0/s elapsed=1062s
+  stage=2(seasonal_lo) step=3400/6250 loss=1.413234 valid=0.75 rate=3.0/s elapsed=1128s
+  stage=2(seasonal_lo) step=3600/6250 loss=0.954698 valid=0.75 rate=3.0/s elapsed=1194s
+  stage=2(seasonal_lo) step=3800/6250 loss=0.869876 valid=0.74 rate=3.0/s elapsed=1260s
+  stage=2(seasonal_lo) step=4000/6250 loss=1.335099 valid=0.75 rate=3.0/s elapsed=1326s
+  [ckpt] saved stage2_step0004000.pt
+  stage=2(seasonal_lo) step=4200/6250 loss=1.081559 valid=0.74 rate=3.0/s elapsed=1393s
+  stage=2(seasonal_lo) step=4400/6250 loss=0.960020 valid=0.75 rate=3.0/s elapsed=1459s
+  stage=2(seasonal_lo) step=4600/6250 loss=1.113057 valid=0.76 rate=3.0/s elapsed=1525s
+  stage=2(seasonal_lo) step=4800/6250 loss=1.033060 valid=0.75 rate=3.0/s elapsed=1591s
+  stage=2(seasonal_lo) step=5000/6250 loss=0.932003 valid=0.73 rate=3.0/s elapsed=1657s
+  stage=2(seasonal_lo) step=5200/6250 loss=1.791299 valid=0.74 rate=3.0/s elapsed=1724s
+  stage=2(seasonal_lo) step=5400/6250 loss=2.733135 valid=0.73 rate=3.0/s elapsed=1790s
+  stage=2(seasonal_lo) step=5600/6250 loss=1.392705 valid=0.75 rate=3.0/s elapsed=1856s
+  stage=2(seasonal_lo) step=5800/6250 loss=1.161224 valid=0.74 rate=3.0/s elapsed=1922s
+  stage=2(seasonal_lo) step=6000/6250 loss=1.311599 valid=0.73 rate=3.0/s elapsed=1988s
+  [ckpt] saved stage2_step0006000.pt
+  stage=2(seasonal_lo) step=6200/6250 loss=1.666458 valid=0.74 rate=3.0/s elapsed=2054s
+  [ckpt] saved stage2_step0006250.pt
+
+=== Stage 3 (seasonal_mid) : 6250 steps, start=0, mask_aug=0.5 ===
+  stage=3(seasonal_mid) step=1/6250 loss=1.654055 valid=0.73 rate=0.3/s elapsed=4s
+  stage=3(seasonal_mid) step=200/6250 loss=2.702876 valid=0.73 rate=3.1/s elapsed=68s
+  stage=3(seasonal_mid) step=400/6250 loss=1.357052 valid=0.73 rate=3.1/s elapsed=133s
+  stage=3(seasonal_mid) step=600/6250 loss=1.106467 valid=0.75 rate=3.1/s elapsed=199s
+  stage=3(seasonal_mid) step=800/6250 loss=0.787707 valid=0.75 rate=3.1/s elapsed=264s
+  stage=3(seasonal_mid) step=1000/6250 loss=0.844513 valid=0.75 rate=3.1/s elapsed=329s
+  stage=3(seasonal_mid) step=1200/6250 loss=1.364936 valid=0.73 rate=3.1/s elapsed=394s
+  stage=3(seasonal_mid) step=1400/6250 loss=0.926962 valid=0.75 rate=3.1/s elapsed=459s
+  stage=3(seasonal_mid) step=1600/6250 loss=1.426678 valid=0.72 rate=3.1/s elapsed=524s
+  stage=3(seasonal_mid) step=1800/6250 loss=1.275706 valid=0.74 rate=3.1/s elapsed=589s
+  stage=3(seasonal_mid) step=2000/6250 loss=2.042053 valid=0.71 rate=3.1/s elapsed=654s
+  [ckpt] saved stage3_step0002000.pt
+  stage=3(seasonal_mid) step=2200/6250 loss=1.915453 valid=0.75 rate=3.1/s elapsed=720s
+  stage=3(seasonal_mid) step=2400/6250 loss=1.993555 valid=0.75 rate=3.1/s elapsed=785s
+  stage=3(seasonal_mid) step=2600/6250 loss=1.487230 valid=0.75 rate=3.1/s elapsed=850s
+  stage=3(seasonal_mid) step=2800/6250 loss=2.302595 valid=0.77 rate=3.1/s elapsed=915s
+  stage=3(seasonal_mid) step=3000/6250 loss=2.855590 valid=0.73 rate=3.1/s elapsed=980s
+  stage=3(seasonal_mid) step=3200/6250 loss=1.835709 valid=0.74 rate=3.1/s elapsed=1045s
+  stage=3(seasonal_mid) step=3400/6250 loss=1.304612 valid=0.76 rate=3.1/s elapsed=1110s
+  stage=3(seasonal_mid) step=3600/6250 loss=1.030079 valid=0.75 rate=3.1/s elapsed=1175s
+  stage=3(seasonal_mid) step=3800/6250 loss=0.754886 valid=0.73 rate=3.1/s elapsed=1240s
+  stage=3(seasonal_mid) step=4000/6250 loss=1.230571 valid=0.76 rate=3.1/s elapsed=1306s
+  [ckpt] saved stage3_step0004000.pt
+  stage=3(seasonal_mid) step=4200/6250 loss=0.970356 valid=0.74 rate=3.1/s elapsed=1371s
+  stage=3(seasonal_mid) step=4400/6250 loss=0.857360 valid=0.75 rate=3.1/s elapsed=1436s
+  stage=3(seasonal_mid) step=4600/6250 loss=1.009968 valid=0.76 rate=3.1/s elapsed=1501s
+  stage=3(seasonal_mid) step=4800/6250 loss=0.933431 valid=0.75 rate=3.1/s elapsed=1566s
+  stage=3(seasonal_mid) step=5000/6250 loss=0.870103 valid=0.74 rate=3.1/s elapsed=1631s
+  stage=3(seasonal_mid) step=5200/6250 loss=1.688594 valid=0.74 rate=3.1/s elapsed=1696s
+  stage=3(seasonal_mid) step=5400/6250 loss=2.693033 valid=0.72 rate=3.1/s elapsed=1761s
+  stage=3(seasonal_mid) step=5600/6250 loss=1.298867 valid=0.76 rate=3.1/s elapsed=1826s
+  stage=3(seasonal_mid) step=5800/6250 loss=1.038291 valid=0.74 rate=3.1/s elapsed=1891s
+  stage=3(seasonal_mid) step=6000/6250 loss=1.215139 valid=0.73 rate=3.1/s elapsed=1956s
+  [ckpt] saved stage3_step0006000.pt
+  stage=3(seasonal_mid) step=6200/6250 loss=1.558650 valid=0.73 rate=3.1/s elapsed=2021s
+  [ckpt] saved stage3_step0006250.pt
+
+=== Stage 4 (seasonal_hi) : 6250 steps, start=0, mask_aug=0.5 ===
+  stage=4(seasonal_hi) step=1/6250 loss=1.348660 valid=0.75 rate=0.3/s elapsed=4s
+  stage=4(seasonal_hi) step=200/6250 loss=2.678447 valid=0.73 rate=3.1/s elapsed=68s
+  stage=4(seasonal_hi) step=400/6250 loss=1.325130 valid=0.74 rate=3.1/s elapsed=133s
+  stage=4(seasonal_hi) step=600/6250 loss=1.052658 valid=0.75 rate=3.1/s elapsed=198s
+  stage=4(seasonal_hi) step=800/6250 loss=0.747592 valid=0.75 rate=3.1/s elapsed=263s
+  stage=4(seasonal_hi) step=1000/6250 loss=0.774610 valid=0.74 rate=3.1/s elapsed=328s
+  stage=4(seasonal_hi) step=1200/6250 loss=1.248084 valid=0.75 rate=3.1/s elapsed=393s
+  stage=4(seasonal_hi) step=1400/6250 loss=0.901850 valid=0.74 rate=3.1/s elapsed=458s
+  stage=4(seasonal_hi) step=1600/6250 loss=1.424424 valid=0.72 rate=3.1/s elapsed=523s
+  stage=4(seasonal_hi) step=1800/6250 loss=1.242600 valid=0.73 rate=3.1/s elapsed=588s
+  stage=4(seasonal_hi) step=2000/6250 loss=2.005659 valid=0.71 rate=3.1/s elapsed=653s
+  [ckpt] saved stage4_step0002000.pt
+  stage=4(seasonal_hi) step=2200/6250 loss=1.861113 valid=0.75 rate=3.1/s elapsed=718s
+  stage=4(seasonal_hi) step=2400/6250 loss=2.088996 valid=0.74 rate=3.1/s elapsed=783s
+  stage=4(seasonal_hi) step=2600/6250 loss=1.448885 valid=0.75 rate=3.1/s elapsed=848s
+  stage=4(seasonal_hi) step=2800/6250 loss=2.308181 valid=0.76 rate=3.1/s elapsed=912s
+  stage=4(seasonal_hi) step=3000/6250 loss=2.792048 valid=0.75 rate=3.1/s elapsed=977s
+  stage=4(seasonal_hi) step=3200/6250 loss=1.827249 valid=0.73 rate=3.1/s elapsed=1042s
+  stage=4(seasonal_hi) step=3400/6250 loss=1.224080 valid=0.76 rate=3.1/s elapsed=1107s
+  stage=4(seasonal_hi) step=3600/6250 loss=0.822188 valid=0.75 rate=3.1/s elapsed=1172s
+  stage=4(seasonal_hi) step=3800/6250 loss=0.750727 valid=0.74 rate=3.1/s elapsed=1236s
+  stage=4(seasonal_hi) step=4000/6250 loss=1.198662 valid=0.77 rate=3.1/s elapsed=1301s
+  [ckpt] saved stage4_step0004000.pt
+  stage=4(seasonal_hi) step=4200/6250 loss=0.935479 valid=0.76 rate=3.1/s elapsed=1366s
+  stage=4(seasonal_hi) step=4400/6250 loss=0.833533 valid=0.75 rate=3.1/s elapsed=1431s
+  stage=4(seasonal_hi) step=4600/6250 loss=0.964804 valid=0.74 rate=3.1/s elapsed=1495s
+  stage=4(seasonal_hi) step=4800/6250 loss=0.897252 valid=0.75 rate=3.1/s elapsed=1560s
+  stage=4(seasonal_hi) step=5000/6250 loss=0.825806 valid=0.74 rate=3.1/s elapsed=1625s
+  stage=4(seasonal_hi) step=5200/6250 loss=1.656991 valid=0.73 rate=3.1/s elapsed=1690s
+  stage=4(seasonal_hi) step=5400/6250 loss=2.621573 valid=0.74 rate=3.1/s elapsed=1755s
+  stage=4(seasonal_hi) step=5600/6250 loss=1.297679 valid=0.74 rate=3.1/s elapsed=1819s
+  stage=4(seasonal_hi) step=5800/6250 loss=1.018288 valid=0.74 rate=3.1/s elapsed=1884s
+  stage=4(seasonal_hi) step=6000/6250 loss=1.194358 valid=0.73 rate=3.1/s elapsed=1949s
+  [ckpt] saved stage4_step0006000.pt
+  stage=4(seasonal_hi) step=6200/6250 loss=1.530478 valid=0.74 rate=3.1/s elapsed=2014s
+  [ckpt] saved stage4_step0006250.pt
+
+=== Stage 5 (residual) : 6250 steps, start=0, mask_aug=0.5 ===
+  stage=5(residual) step=1/6250 loss=1.365091 valid=0.73 rate=0.3/s elapsed=4s
+  stage=5(residual) step=200/6250 loss=2.645847 valid=0.73 rate=3.1/s elapsed=67s
+  stage=5(residual) step=400/6250 loss=1.311506 valid=0.73 rate=3.1/s elapsed=131s
+  stage=5(residual) step=600/6250 loss=1.020735 valid=0.75 rate=3.1/s elapsed=196s
+  stage=5(residual) step=800/6250 loss=0.733914 valid=0.75 rate=3.1/s elapsed=260s
+  stage=5(residual) step=1000/6250 loss=0.796779 valid=0.74 rate=3.1/s elapsed=323s
+  stage=5(residual) step=1200/6250 loss=1.308701 valid=0.72 rate=3.1/s elapsed=387s
+  stage=5(residual) step=1400/6250 loss=0.842579 valid=0.74 rate=3.1/s elapsed=451s
+  stage=5(residual) step=1600/6250 loss=1.354366 valid=0.73 rate=3.1/s elapsed=515s
+  stage=5(residual) step=1800/6250 loss=1.214035 valid=0.74 rate=3.1/s elapsed=579s
+  stage=5(residual) step=2000/6250 loss=1.953405 valid=0.71 rate=3.1/s elapsed=643s
+  [ckpt] saved stage5_step0002000.pt
+  stage=5(residual) step=2200/6250 loss=1.823103 valid=0.75 rate=3.1/s elapsed=707s
+  stage=5(residual) step=2400/6250 loss=1.924815 valid=0.75 rate=3.1/s elapsed=771s
+  stage=5(residual) step=2600/6250 loss=1.430901 valid=0.74 rate=3.1/s elapsed=835s
+  stage=5(residual) step=2800/6250 loss=2.257605 valid=0.77 rate=3.1/s elapsed=899s
+  stage=5(residual) step=3000/6250 loss=2.789403 valid=0.74 rate=3.1/s elapsed=963s
+  stage=5(residual) step=3200/6250 loss=1.774242 valid=0.74 rate=3.1/s elapsed=1027s
+  stage=5(residual) step=3400/6250 loss=1.206631 valid=0.76 rate=3.1/s elapsed=1091s
+  stage=5(residual) step=3600/6250 loss=0.748708 valid=0.76 rate=3.1/s elapsed=1155s
+  stage=5(residual) step=3800/6250 loss=0.727952 valid=0.74 rate=3.1/s elapsed=1219s
+  stage=5(residual) step=4000/6250 loss=1.153112 valid=0.76 rate=3.1/s elapsed=1283s
+  [ckpt] saved stage5_step0004000.pt
+  stage=5(residual) step=4200/6250 loss=0.917030 valid=0.74 rate=3.1/s elapsed=1347s
+  stage=5(residual) step=4400/6250 loss=0.776013 valid=0.74 rate=3.1/s elapsed=1411s
+  stage=5(residual) step=4600/6250 loss=0.955711 valid=0.76 rate=3.1/s elapsed=1475s
+  stage=5(residual) step=4800/6250 loss=0.865528 valid=0.75 rate=3.1/s elapsed=1539s
+  stage=5(residual) step=5000/6250 loss=0.785850 valid=0.74 rate=3.1/s elapsed=1603s
+  stage=5(residual) step=5200/6250 loss=1.609840 valid=0.73 rate=3.1/s elapsed=1667s
+  stage=5(residual) step=5400/6250 loss=2.560390 valid=0.73 rate=3.1/s elapsed=1731s
+  stage=5(residual) step=5600/6250 loss=1.255699 valid=0.74 rate=3.1/s elapsed=1795s
+  stage=5(residual) step=5800/6250 loss=0.940698 valid=0.75 rate=3.1/s elapsed=1859s
+  stage=5(residual) step=6000/6250 loss=1.123028 valid=0.74 rate=3.1/s elapsed=1923s
+  [ckpt] saved stage5_step0006000.pt
+  stage=5(residual) step=6200/6250 loss=1.534162 valid=0.73 rate=3.1/s elapsed=1987s
+  [ckpt] saved stage5_step0006250.pt
+
+Training complete.
